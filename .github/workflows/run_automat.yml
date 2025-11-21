@@ -1,0 +1,34 @@
+name: Daily Kotak 811 Run at 9:30 AM IST
+
+on:
+  schedule:
+    - cron: "0 4 * * *"   # Runs every day at 9:30 AM IST
+  workflow_dispatch:      # Allows manual run also
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install Python dependencies
+        run: |
+          pip install pandas requests pygsheets google-auth google-auth-oauthlib
+
+      - name: Create Google Credentials File
+        run: |
+          echo "$GOOGLE_SERVICE_JSON" > service.json
+
+      - name: Run Automation Script
+        env:
+          AF_TOKEN: ${{ secrets.AF_TOKEN }}
+          GOOGLE_SERVICE_JSON: ${{ secrets.GOOGLE_SERVICE_JSON }}
+        run: |
+          python kotak_811.py --start "2025-10-26" --end "$(date -d 'yesterday' +%Y-%m-%d)"
