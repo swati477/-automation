@@ -21,7 +21,7 @@ SHEET_NAME = "Automate"
 # ======================================================
 
 # 🔐 AppsFlyer Token from GitHub Secret
-AF_TOKEN = os.getenv("AF_TOKEN")
+AF_TOKEN = os.getenv("TOKEN")
 
 if not AF_TOKEN:
     raise Exception("❌ Missing AF_TOKEN environment variable in GitHub Secrets!")
