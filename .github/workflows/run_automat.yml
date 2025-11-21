@@ -1,7 +1,7 @@
 on:
   schedule:
     - cron: "0 4 * * *"   # runs daily at 04:00 UTC
-
+    
 jobs:
   run:
     runs-on: ubuntu-latest
