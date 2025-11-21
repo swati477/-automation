@@ -137,3 +137,6 @@ if __name__ == "__main__":
     parser.add_argument("--start", type=str, required=True, help="Start date YYYY-MM-DD")
     parser.add_argument("--end", type=str, required=True, help="End date YYYY-MM-DD")
     args = parser.parse_args()
+
+    main(args.start, args.end)
+
