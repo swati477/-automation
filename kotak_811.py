@@ -14,7 +14,7 @@ import json
 BASE_URL = "https://hq1.appsflyer.com/api/raw-data/export/app/com.kotak811mobilebankingapp.instantsavingsupiscanandpayrecharge"
 
 SPREADSHEET_ID = "1ABrtV_PrFGn7Bue0wzK62LlBpN05dlsuzngGqszNNpo"
-SHEET_NAME = "Automated_Data 27 Oct"
+SHEET_NAME = "Automate"
 
 # ======================================================
 # AUTH
