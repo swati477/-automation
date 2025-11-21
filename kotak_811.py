@@ -21,14 +21,14 @@ SHEET_NAME = "Automate"
 # ======================================================
 
 # 🔐 AppsFlyer Token from GitHub Secret
-AF_TOKEN = os.getenv("TOKEN")
+TOKEN = os.getenv("TOKEN")
 
-if not AF_TOKEN:
+if not TOKEN:
     raise Exception("❌ Missing AF_TOKEN environment variable in GitHub Secrets!")
 
 HEADERS = {
     "accept": "text/csv",
-    "authorization": f"Bearer {AF_TOKEN}"
+    "authorization": f"Bearer {TOKEN}"
 }
 
 # 🔐 Google Service Account JSON from GitHub Secret
