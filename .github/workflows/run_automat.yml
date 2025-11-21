@@ -1,11 +1,6 @@
-# ===== AUTOMATIC SCHEDULE DISABLED =====
 on:
   schedule:
-    - cron: "0 4 * * *"
-
-on:
-  workflow_dispatch:
-
+    - cron: "0 4 * * *"   # runs daily at 04:00 UTC
 
 jobs:
   run:
