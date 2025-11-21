@@ -29,7 +29,7 @@ jobs:
 
       - name: Run Automation Script
         env:
-          TOKEN: ${{ secrets.TOKEN }}
+          AFTOKEN: ${{ secrets.AFTOKEN }}
           GOOGLE_SERVICE_JSON: ${{ secrets.GOOGLE_SERVICE_JSON }}
         run: |
           python kotak_811.py --start "2025-10-26" --end "$(date -d 'yesterday' +%Y-%m-%d)"
