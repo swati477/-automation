@@ -1,9 +1,10 @@
-name: Daily Kotak 811 Run at 9:30 AM IST
-
+# ===== AUTOMATIC SCHEDULE DISABLED =====
+# on:
+#   schedule:
+#     - cron: "0 4 * * *"
 on:
-  schedule:
-    - cron: "0 4 * * *"   # Runs every day at 9:30 AM IST
-  workflow_dispatch:      # Allows manual run also
+  workflow_dispatch:
+
 
 jobs:
   run:
