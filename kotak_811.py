@@ -24,7 +24,7 @@ SHEET_NAME = "Automate"
 TOKEN = os.getenv("TOKEN")
 
 if not TOKEN:
-    raise Exception("❌ Missing AF_TOKEN environment variable in GitHub Secrets!")
+    raise Exception("❌ Missing TOKEN environment variable in GitHub Secrets!")
 
 HEADERS = {
     "accept": "text/csv",
@@ -104,15 +104,12 @@ def process_inapp(df):
 
 def main(start_date, end_date):
 
-    # Fetch Data
     installs = fetch_data("installs_report", start_date, end_date)
     inapp = fetch_data("in-app-events-postbacks", start_date, end_date)
 
-    # Process
     pivot_install = process_installs(installs)
     pivot_inapp = process_inapp(inapp)
 
-    # Merge
     merged = pd.merge(
         pivot_install,
         pivot_inapp,
@@ -120,11 +117,9 @@ def main(start_date, end_date):
         how="outer"
     ).fillna(0)
 
-    # Clear Sheet
     print("🧹 Clearing sheet...")
     wks.clear(start="A1")
 
-    # Write
     print("📤 Writing pivot_install to A3")
     wks.set_dataframe(pivot_install, start=(3, 1))
 
@@ -137,16 +132,8 @@ def main(start_date, end_date):
     print("🎉 ALL DONE!")
 
 
-# ======================================================
-# CLI ARGUMENTS (CUSTOM DATE RANGE)
-# ======================================================
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-
     parser.add_argument("--start", type=str, required=True, help="Start date YYYY-MM-DD")
     parser.add_argument("--end", type=str, required=True, help="End date YYYY-MM-DD")
-
-    args = parser.parse_args()
-
-    main(args.start, args.end)
+    args = parser.parse_a_
